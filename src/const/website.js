@@ -1,16 +1,13 @@
 export default {
-  title: 'nx-admin',
+  title: '修仙后台',
   logo: 'N',
-  author: 'BY nxmin',
+  author: '幻境',
   whiteList: ['/login', '/404', '/401', '/lock'],
   lockPage: '/lock',
   info: {
-    title: 'nx-admin',
+    title: '修仙管理后台',
     list: [
-      'nx-admin 是一个基于XXXX工程可视化管理平台，采用token交互验证方式。',
-      '您可以 nx-admin 为基础，不只限制于vue的页面，你可以嵌入任意第三方网站，基于iframe框架。',
-      'nx-admin 构建简单上手快，最大程度上帮助企业节省时间成本和费用开支。',
-      '技术答疑QQ群，为了提高入群的门槛，象征性收取0.9元：493671066'
+      '我欲成仙，快乐齐天'
     ]
   },
   wel: {

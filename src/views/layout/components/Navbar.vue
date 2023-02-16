@@ -5,18 +5,18 @@
     <nx-breadcrumb class="breadcrumb-container"></nx-breadcrumb>
 
     <div class="right-menu">
-     <error-log class="errLog-container right-menu-item"></error-log>
+     <!-- <error-log class="errLog-container right-menu-item"></error-log> -->
 
-      <nx-github style="margin-top:2px" class="nx-help right-menu-item"></nx-github>
+      <!-- <nx-github style="margin-top:2px" class="nx-help right-menu-item"></nx-github> -->
       <!-- <error-log class="errLog-container right-menu-item"></error-log> -->
-      <nx-help class="nx-help right-menu-item" />
+      <!-- <nx-help class="nx-help right-menu-item" />
       <nx-top-lock style="cursor:pointer" class="nx-help"></nx-top-lock>
       <el-tooltip effect="dark" content="全屏" placement="bottom">
         <nx-full-screen class="screenfull right-menu-item"></nx-full-screen>
-      </el-tooltip>
+      </el-tooltip> -->
 
       <!-- <lang-select class="international right-menu-item"></lang-select> -->
-      <nx-lang-select class="international right-menu-item"></nx-lang-select>
+      <!-- <nx-lang-select class="international right-menu-item"></nx-lang-select> -->
 
       <el-tooltip effect="dark" content="主题" placement="bottom">
         <!-- <theme-picker class="theme-switch right-menu-item"></theme-picker> -->
@@ -31,14 +31,14 @@
         <el-dropdown-menu slot="dropdown">
           <router-link to="/">
             <el-dropdown-item>
-              home
+              首页
             </el-dropdown-item>
           </router-link>
-          <a target='_blank' href="https://github.com/mgbq/nx-admin/">
+          <!-- <a target='_blank' href="https://github.com/mgbq/nx-admin/">
             <el-dropdown-item>
               github地址
             </el-dropdown-item>
-          </a>
+          </a> -->
           <el-dropdown-item divided>
             <span @click="logout" style="display:block;">退出</span>
           </el-dropdown-item>

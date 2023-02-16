@@ -5,7 +5,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const name = 'nxadmin' // page title
+const name = '修仙' // page title
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.

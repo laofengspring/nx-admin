@@ -488,7 +488,7 @@ export const constantRouterMap = [
     redirect: '/table/complex-table',
     name: 'table',
     meta: {
-      title: 'Table1',
+      title: 'Table',
       icon: 'table'
     },
     children: [

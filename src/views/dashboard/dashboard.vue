@@ -5,26 +5,26 @@
         style="position: absolute; top: 48px; right: 0; border: 0;"
         src="../../../static/img/report/forkme.png"
         alt="Fork me on GitHub"></a> -->
-    <div class="item">
+    <!-- <div class="item">
       <h4>数据展示</h4>
       <nx-data-display :option="option"></nx-data-display>
-    </div>
-    <div class="item">
+    </div> -->
+    <!-- <div class="item">
       <h4>选项卡展示</h4>
       <nx-data-tabs :option="easyDataOption"></nx-data-tabs>
-    </div>
+    </div> -->
     <div class="item">
-      <h4>卡片的展示</h4>
+      <h4>角色</h4>
       <nx-data-card :option="easyDataOption0"></nx-data-card>
     </div>
-    <div class="item">
+    <!-- <div class="item">
       <h4>带数字的展示</h4>
       <nx-data-icons :option="easyDataOption1"></nx-data-icons>
     </div>
     <div class="item">
       <h4>简易展示</h4>
       <nx-data-icons :option="easyDataOption2"></nx-data-icons>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
     nxDataCard,
     nxDataTabs,
     nxDataIcons,
-    nxGithubCorner
+    // nxGithubCorner
 
   },
   data() {

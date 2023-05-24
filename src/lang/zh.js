@@ -89,7 +89,12 @@ export default {
     roadBookMap: '路书地图',
     cityLlistMap: '城市列表地图',
     baidumap: '百度地图',
-    gpsMap: 'gps定位'
+    gpsMap: 'gps定位',
+    jingdian: '景点管理',
+    wanjia: '玩家',
+    huodong: '活动管理',
+    biaoge: '表格',
+    juese: '角色管理'
   },
   permission: {
     roles: '你的权限',

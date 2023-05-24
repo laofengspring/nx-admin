@@ -488,23 +488,41 @@ export const constantRouterMap = [
     redirect: '/table/complex-table',
     name: 'table',
     meta: {
-      title: 'Table',
+      title: 'biaoge',
       icon: 'table'
     },
     children: [
       {
         path: 'complex-table',
         name: 'complex-table',
-        component: () => import('@/views/table/complex-table'),
-        meta: { title: 'complexTable' }
+        component: () => import('@/views/table/complex-table_wj'),
+        meta: { title: 'wanjia' }
       },
       {
-        path: 'TreeTable',
-        name: 'TreeTable',
-        component: () => import('@/views/table/tree-table/index'),
-        meta: { title: 'treeTable' }
+        path: 'complex-table1',
+        name: 'complex-table1',
+        component: () => import('@/views/table/complex-table_js'),
+        meta: { title: 'juese' }
+      },
+      {
+        path: 'complex-table2',
+        name: 'complex-table2',
+        component: () => import('@/views/table/complex-table_jd'),
+        meta: { title: 'jingdian' }
+      },
+      {
+        path: 'complex-table3',
+        name: 'complex-table3',
+        component: () => import('@/views/table/complex-table_hd'),
+        meta: { title: 'huodong' }
       }
-
+      // ,
+      // {
+      //   path: 'TreeTable',
+      //   name: 'TreeTable',
+      //   component: () => import('@/views/table/tree-table/index'),
+      //   meta: { title: 'treeTable' }
+      // }
     ]
   }
   //

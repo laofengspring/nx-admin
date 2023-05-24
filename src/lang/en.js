@@ -86,7 +86,12 @@ export default {
     roadBookMap: 'roadBookMap',
     cityLlistMap: 'cityLlistMap',
     baidumap: 'baidumap',
-    gpsMap: 'gpsMap'
+    gpsMap: 'gpsMap',
+    jingdian: '景点管理',
+    wanjia: '玩家',
+    huodong: '活动管理',
+    biaoge: '表格',
+    juese: '角色管理'
   },
   excel: {
     export: 'Export',

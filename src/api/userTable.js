@@ -35,3 +35,9 @@ export function addUser(params) {
     params: params
   })
 }
+export function getAllRoles(params) {
+  return request({
+    url: '/user/getallroles',
+    method: 'get'
+  })
+}

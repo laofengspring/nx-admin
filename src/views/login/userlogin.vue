@@ -39,10 +39,10 @@ export default {
         callback()
       }
     }
-    return {
+    return { // admin 123456
       loginForm: {
-        username: 'admin',
-        password: '123456'
+        username: '',
+        password: ''
       },
       checked: false,
       code: {

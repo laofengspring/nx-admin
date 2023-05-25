@@ -39,6 +39,13 @@
       </el-table-column> -->
       <el-table-column prop="mobile" label="手机号" min-width="160">
       </el-table-column>
+      <el-table-column
+        prop="create_time"
+        label="创建日期"
+        min-width="200"
+        :formatter="dateFormat"
+      >
+      </el-table-column>
       <!-- <el-table-column label="操作" width="150">
         <template slot-scope="scope">
           <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
@@ -55,13 +62,13 @@
     </el-table>
 
     <!--工具条-->
-    <!-- <el-col :span="24" class="toolbar">
-      <el-button
+    <el-col :span="24" class="toolbar">
+      <!-- <el-button
         type="danger"
         @click="batchRemove"
         :disabled="this.sels.length === 0"
         >批量删除</el-button
-      >
+      > -->
       <el-pagination
         layout="prev, pager, next"
         @current-change="handleCurrentChange"
@@ -70,7 +77,7 @@
         style="float:right;"
       >
       </el-pagination>
-    </el-col> -->
+    </el-col>
 
     <!--编辑界面-->
     <el-dialog
@@ -134,6 +141,7 @@ import {
   editUser,
   addUser
 } from "@/api/userTable";
+import * as fecha from "element-ui/lib/utils/date";
 
 export default {
   data() {
@@ -145,7 +153,7 @@ export default {
       },
       dialogFormVisible: false,
       filters: {
-        id: ''
+        id: ""
       },
       users: [],
       total: 0,
@@ -174,6 +182,11 @@ export default {
     // 性别显示转换
     formatSex: function(row, column) {
       return row.gender === 1 ? "男" : row.gender === 0 ? "女" : "未知";
+    },
+    dateFormat(row, column, cellValue) {
+      return cellValue
+        ? fecha.format(new Date(cellValue), "yyyy-MM-dd hh:mm:ss")
+        : "";
     },
     handleCurrentChange(val) {
       this.page = val;

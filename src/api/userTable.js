@@ -41,3 +41,21 @@ export function getAllRoles(params) {
     method: 'get'
   })
 }
+export function getAllSpots(params) {
+  return request({
+    url: '/user/getallspots',
+    method: 'get'
+  })
+}
+export function getAllActive(params) {
+  return request({
+    url: '/user/getallactive',
+    method: 'get'
+  })
+}
+export function getAllWeapons(params) {
+  return request({
+    url: '/user/getallweapons',
+    method: 'get'
+  })
+}

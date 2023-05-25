@@ -91,6 +91,7 @@ export default {
     wanjia: '玩家',
     huodong: '活动管理',
     biaoge: '表格',
+    wuqi: '武器管理',
     juese: '角色管理'
   },
   excel: {

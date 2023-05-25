@@ -18,15 +18,13 @@
     >
       <el-table-column type="selection" width="55"> </el-table-column>
       <el-table-column type="index" label="序号" width="60"> </el-table-column>
-      <el-table-column prop="name" label="活动名称" width="120">
+      <el-table-column prop="name" label="武器名称" width="100">
       </el-table-column>
-      <el-table-column prop="title" label="标题" width="120"> </el-table-column>
-      <el-table-column prop="introduction" label="介绍" width="120">
-      </el-table-column>
+      <el-table-column prop="info" label="简介" width="120"> </el-table-column>
       <el-table-column
-        prop="background_pic"
-        label="活动图片"
-        width="180"
+        prop="icon"
+        label="图标"
+        width="150"
         align="center"
         header-align="center"
       >
@@ -34,8 +32,8 @@
           <el-image
             style="width: 100%; height: 100px"
             fit="contain"
-            :src="scope.row.background_pic"
-            :preview-src-list="[scope.row.background_pic]"
+            :src="scope.row.icon"
+            :preview-src-list="[scope.row.icon]"
             :key="scope.row.id"
           >
             <div slot="error" class="image-slot">
@@ -45,18 +43,33 @@
         </template>
       </el-table-column>
       <el-table-column
-        prop="start_time"
-        label="活动开始"
-        min-width="120"
-        :formatter="dateFormat"
+        prop="image"
+        label="展示图"
+        width="150"
+        align="center"
+        header-align="center"
       >
+        <template slot-scope="scope">
+          <el-image
+            style="width: 100%; height: 100px"
+            fit="contain"
+            :src="scope.row.image"
+            :preview-src-list="[scope.row.image]"
+            :key="scope.row.id"
+          >
+            <div slot="error" class="image-slot">
+              <i class="el-icon-picture-outline"></i>
+            </div>
+          </el-image>
+        </template>
       </el-table-column>
-      <el-table-column
-        prop="stop_time"
-        label="活动结束"
-        min-width="120"
-        :formatter="dateFormat"
-      >
+      <el-table-column prop="skill1" label="技能1" width="120">
+      </el-table-column>
+      <el-table-column prop="skill2" label="技能2" width="120">
+      </el-table-column>
+      <el-table-column prop="skill3" label="技能3" width="120">
+      </el-table-column>
+      <el-table-column prop="skill4" label="技能4" width="120">
       </el-table-column>
       <el-table-column label="操作" width="150">
         <template slot-scope="scope">
@@ -151,7 +164,7 @@ import {
   batchRemoveUser,
   editUser,
   addUser,
-  getAllActive
+  getAllWeapons
 } from "@/api/userTable";
 import * as fecha from "element-ui/lib/utils/date";
 
@@ -202,11 +215,11 @@ export default {
     },
     handleCurrentChange(val) {
       this.page = val;
-      this.getActives();
+      this.getWeapons();
     },
     // 获取用户列表
-    getActives() {
-      getAllActive().then(res => {
+    getWeapons() {
+      getAllWeapons().then(res => {
         this.total = res.data.length;
         this.users = res.data;
       });
@@ -223,7 +236,7 @@ export default {
               message: "删除成功",
               type: "success"
             });
-            this.getActives();
+            this.getWeapons();
           });
         })
         .catch(() => {});
@@ -265,7 +278,7 @@ export default {
                 });
                 this.$refs["editForm"].resetFields();
                 this.dialogFormVisible = false;
-                this.getActives();
+                this.getWeapons();
               });
             })
             .catch(e => {
@@ -296,7 +309,7 @@ export default {
                 });
                 this.$refs["editForm"].resetFields();
                 this.dialogFormVisible = false;
-                this.getActives();
+                this.getWeapons();
               });
             })
             .catch(e => {
@@ -323,14 +336,14 @@ export default {
               message: "删除成功",
               type: "success"
             });
-            this.getActives();
+            this.getWeapons();
           });
         })
         .catch(() => {});
     }
   },
   mounted() {
-    this.getActives();
+    this.getWeapons();
   }
 };
 </script>

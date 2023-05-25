@@ -507,12 +507,18 @@ export const constantRouterMap = [
       {
         path: 'complex-table2',
         name: 'complex-table2',
-        component: () => import('@/views/table/complex-table_jd'),
-        meta: { title: 'jingdian' }
+        component: () => import('@/views/table/complex-table_wq'),
+        meta: { title: 'wuqi' }
       },
       {
         path: 'complex-table3',
         name: 'complex-table3',
+        component: () => import('@/views/table/complex-table_jd'),
+        meta: { title: 'jingdian' }
+      },
+      {
+        path: 'complex-table4',
+        name: 'complex-table4',
         component: () => import('@/views/table/complex-table_hd'),
         meta: { title: 'huodong' }
       }

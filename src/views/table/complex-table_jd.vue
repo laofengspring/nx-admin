@@ -3,12 +3,12 @@
 		<!--工具条-->
 		<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 			<el-form :inline="true" :model="filters" @submit.native.prevent>
-				<el-form-item>
+				<!-- <el-form-item>
 					<el-input v-model="filters.name" placeholder="姓名"></el-input>
 				</el-form-item>
 				<el-form-item>
-					<el-button type="primary" v-on:click="getUsers">查询</el-button>
-				</el-form-item>
+					<el-button type="primary" v-on:click="getSpots">查询</el-button>
+				</el-form-item> -->
 				<el-form-item>
 					<el-button type="primary" @click="handleAdd">新增</el-button>
 				</el-form-item>
@@ -19,17 +19,10 @@
 		<el-table :data="users" highlight-current-row @selection-change="selsChange" style="width: 100%;">
 			<el-table-column type="selection" width="55">
 			</el-table-column>
-			<el-table-column type="index" width="60">
+      <el-table-column prop="id" label="ID" width="120"> </el-table-column>
+			<el-table-column prop="name" label="景点" width="120">
 			</el-table-column>
-			<el-table-column prop="name" label="姓名" width="120">
-			</el-table-column>
-			<el-table-column prop="sex" label="性别" width="120" :formatter="formatSex">
-			</el-table-column>
-			<el-table-column prop="age" label="年龄" width="120">
-			</el-table-column>
-			<el-table-column prop="birth" label="生日" width="120">
-			</el-table-column>
-			<el-table-column prop="addr" label="地址" min-width="160">
+			<el-table-column prop="des" label="介绍" min-width="160">
 			</el-table-column>
 			<el-table-column label="操作" width="150">
 				<template slot-scope="scope">
@@ -80,7 +73,7 @@
 <script>
 import util from '@/utils/table.js'
 import {
-  getUserListPage,
+  getAllSpots,
   removeUser,
   batchRemoveUser,
   editUser,
@@ -129,17 +122,17 @@ export default {
     },
     handleCurrentChange(val) {
       this.page = val
-      this.getUsers()
+      this.getSpots()
     },
     // 获取用户列表
-    getUsers() {
+    getSpots() {
       const para = {
         page: this.page,
         name: this.filters.name
       }
-      getUserListPage(para).then(res => {
-        this.total = res.data.total
-        this.users = res.data.users
+      getAllSpots(para).then(res => {
+        this.total = res.data.length;
+        this.users = res.data;
       })
     },
     // 删除
@@ -154,7 +147,7 @@ export default {
               message: '删除成功',
               type: 'success'
             })
-            this.getUsers()
+            this.getSpots()
           })
         })
         .catch(() => {})
@@ -196,7 +189,7 @@ export default {
                 })
                 this.$refs['editForm'].resetFields()
                 this.dialogFormVisible = false
-                this.getUsers()
+                this.getSpots()
               })
             })
             .catch(e => {
@@ -227,7 +220,7 @@ export default {
                 })
                 this.$refs['editForm'].resetFields()
                 this.dialogFormVisible = false
-                this.getUsers()
+                this.getSpots()
               })
             })
             .catch(e => {
@@ -254,14 +247,14 @@ export default {
               message: '删除成功',
               type: 'success'
             })
-            this.getUsers()
+            this.getSpots()
           })
         })
         .catch(() => {})
     }
   },
   mounted() {
-    this.getUsers()
+    this.getSpots()
   }
 }
 </script>

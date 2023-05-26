@@ -1,10 +1,21 @@
 <template>
   <section class="app-container">
     <!--工具条-->
-    <el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
-      <el-form :inline="true" :model="filters" @submit.native.prevent>
+    <el-col
+      :span="24"
+      class="toolbar"
+      style="padding-bottom: 0px;"
+    >
+      <el-form
+        :inline="true"
+        :model="filters"
+        @submit.native.prevent
+      >
         <el-form-item>
-          <el-button type="primary" @click="handleAdd">新增</el-button>
+          <el-button
+            type="primary"
+            @click="handleAdd"
+          >新增</el-button>
         </el-form-item>
       </el-form>
     </el-col>
@@ -16,11 +27,26 @@
       @selection-change="selsChange"
       style="width: 100%;"
     >
-      <el-table-column type="selection" width="55"> </el-table-column>
-      <el-table-column type="index" label="序号" width="60"> </el-table-column>
-      <el-table-column prop="name" label="武器名称" width="100">
+      <el-table-column
+        type="selection"
+        width="55"
+      > </el-table-column>
+      <el-table-column
+        type="index"
+        label="序号"
+        width="60"
+      > </el-table-column>
+      <el-table-column
+        prop="name"
+        label="武器名称"
+        width="100"
+      >
       </el-table-column>
-      <el-table-column prop="info" label="简介" width="120"> </el-table-column>
+      <el-table-column
+        prop="info"
+        label="简介"
+        width="120"
+      > </el-table-column>
       <el-table-column
         prop="icon"
         label="图标"
@@ -36,7 +62,10 @@
             :preview-src-list="[scope.row.icon]"
             :key="scope.row.id"
           >
-            <div slot="error" class="image-slot">
+            <div
+              slot="error"
+              class="image-slot"
+            >
               <i class="el-icon-picture-outline"></i>
             </div>
           </el-image>
@@ -57,43 +86,67 @@
             :preview-src-list="[scope.row.image]"
             :key="scope.row.id"
           >
-            <div slot="error" class="image-slot">
+            <div
+              slot="error"
+              class="image-slot"
+            >
               <i class="el-icon-picture-outline"></i>
             </div>
           </el-image>
         </template>
       </el-table-column>
-      <el-table-column prop="skill1" label="技能1" width="120">
+      <el-table-column
+        prop="skill1"
+        label="技能1"
+        width="120"
+      >
       </el-table-column>
-      <el-table-column prop="skill2" label="技能2" width="120">
+      <el-table-column
+        prop="skill2"
+        label="技能2"
+        width="120"
+      >
       </el-table-column>
-      <el-table-column prop="skill3" label="技能3" width="120">
+      <el-table-column
+        prop="skill3"
+        label="技能3"
+        width="120"
+      >
       </el-table-column>
-      <el-table-column prop="skill4" label="技能4" width="120">
+      <el-table-column
+        prop="skill4"
+        label="技能4"
+        min-width="120"
+      >
       </el-table-column>
-      <el-table-column label="操作" width="150">
+      <el-table-column
+        label="操作"
+        width="150"
+      >
         <template slot-scope="scope">
-          <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
-            >编辑</el-button
-          >
+          <el-button
+            size="small"
+            @click="handleEdit(scope.$index, scope.row)"
+          >编辑</el-button>
           <el-button
             type="danger"
             size="small"
             @click="handleDel(scope.$index, scope.row)"
-            >删除</el-button
-          >
+          >删除</el-button>
         </template>
       </el-table-column>
     </el-table>
 
     <!--工具条-->
-    <el-col :span="24" class="toolbar">
+    <el-col
+      :span="24"
+      class="toolbar"
+    >
       <el-button
         type="danger"
         @click="batchRemove"
         :disabled="this.sels.length === 0"
-        >批量删除</el-button
-      >
+      >批量删除</el-button>
       <el-pagination
         layout="prev, pager, next"
         @current-change="handleCurrentChange"
@@ -116,42 +169,118 @@
         :rules="editFormRules"
         ref="editForm"
       >
-        <el-form-item label="姓名" prop="name">
-          <el-input v-model="editForm.name" auto-complete="off"></el-input>
+        <el-form-item
+          label="武器名称"
+          prop="name"
+        >
+          <el-input
+            v-model="editForm.name"
+            auto-complete="off"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="性别">
-          <el-radio-group v-model="editForm.sex">
-            <el-radio class="radio" :label="1">男</el-radio>
-            <el-radio class="radio" :label="0">女</el-radio>
-          </el-radio-group>
+        <el-form-item
+          label="简介"
+          prop="info"
+        >
+          <el-input
+            v-model="editForm.info"
+            auto-complete="off"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="年龄">
-          <el-input-number
-            v-model="editForm.age"
-            :min="0"
-            :max="200"
-          ></el-input-number>
+        <el-form-item
+          label="技能1"
+          prop="skill1"
+        >
+          <el-input
+            v-model="editForm.skill1"
+            auto-complete="off"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="生日">
-          <el-date-picker
-            type="date"
-            placeholder="选择日期"
-            v-model="editForm.birth"
-          ></el-date-picker>
+        <el-form-item
+          label="技能2"
+          prop="skill2"
+        >
+          <el-input
+            v-model="editForm.skill2"
+            auto-complete="off"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="地址">
-          <el-input type="textarea" v-model="editForm.addr"></el-input>
+        <el-form-item
+          label="技能3"
+          prop="skill3"
+        >
+          <el-input
+            v-model="editForm.skill3"
+            auto-complete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="技能4"
+          prop="skill4"
+        >
+          <el-input
+            v-model="editForm.skill4"
+            auto-complete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="图标">
+          <el-upload
+            class="upload-demo"
+            drag
+            action=""
+            :http-request="uploadImage"
+            limit="1"
+            multiple
+          >
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">
+              将文件拖到此处，或<em>点击上传</em>
+            </div>
+            <div
+              class="el-upload__tip"
+              slot="tip"
+            >
+              只能上传jpg/png文件，且不超过2M
+            </div>
+          </el-upload>
+        </el-form-item>
+        <el-form-item label="展示图">
+          <el-upload
+            class="upload-demo"
+            drag
+            action=""
+            :http-request="uploadImage"
+            limit="1"
+            multiple
+          >
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">
+              将文件拖到此处，或<em>点击上传</em>
+            </div>
+            <div
+              class="el-upload__tip"
+              slot="tip"
+            >
+              只能上传jpg/png文件，且不超过2M
+            </div>
+          </el-upload>
         </el-form-item>
       </el-form>
-      <div slot="footer" class="dialog-footer">
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
         <el-button @click.native="dialogFormVisible = false">取消</el-button>
         <el-button
           v-if="dialogStatus == 'create'"
           type="primary"
           @click="createData"
-          >添加</el-button
-        >
-        <el-button v-else type="primary" @click="updateData">修改</el-button>
+        >添加</el-button>
+        <el-button
+          v-else
+          type="primary"
+          @click="updateData"
+        >修改</el-button>
       </div>
     </el-dialog>
   </section>
@@ -169,7 +298,7 @@ import {
 import * as fecha from "element-ui/lib/utils/date";
 
 export default {
-  data() {
+  data () {
     return {
       dialogStatus: "",
       textMap: {
@@ -205,27 +334,27 @@ export default {
   },
   methods: {
     // 性别显示转换
-    formatSex: function(row, column) {
+    formatSex: function (row, column) {
       return row.gender === 1 ? "男" : row.gender === 0 ? "女" : "未知";
     },
-    dateFormat(row, column, cellValue) {
+    dateFormat (row, column, cellValue) {
       return cellValue
         ? fecha.format(new Date(cellValue), "yyyy-MM-dd hh:mm:ss")
         : "";
     },
-    handleCurrentChange(val) {
+    handleCurrentChange (val) {
       this.page = val;
       this.getWeapons();
     },
     // 获取用户列表
-    getWeapons() {
+    getWeapons () {
       getAllWeapons().then(res => {
         this.total = res.data.length;
         this.users = res.data;
       });
     },
     // 删除
-    handleDel(index, row) {
+    handleDel (index, row) {
       this.$confirm("确认删除该角色吗?", "提示", {
         type: "warning"
       })
@@ -239,16 +368,16 @@ export default {
             this.getWeapons();
           });
         })
-        .catch(() => {});
+        .catch(() => { });
     },
     // 显示编辑界面
-    handleEdit(index, row) {
+    handleEdit (index, row) {
       this.dialogStatus = "update";
       this.dialogFormVisible = true;
       this.editForm = Object.assign({}, row);
     },
     // 显示新增界面
-    handleAdd() {
+    handleAdd () {
       this.dialogStatus = "create";
       this.dialogFormVisible = true;
       this.editForm = {
@@ -261,7 +390,7 @@ export default {
       };
     },
     // 编辑
-    updateData() {
+    updateData () {
       this.$refs.editForm.validate(valid => {
         if (valid) {
           this.$confirm("确认提交吗？", "提示", {})
@@ -289,7 +418,7 @@ export default {
       });
     },
     // 新增
-    createData: function() {
+    createData: function () {
       this.$refs.editForm.validate(valid => {
         if (valid) {
           this.$confirm("确认提交吗？", "提示", {})
@@ -320,11 +449,11 @@ export default {
       });
     },
     // 全选单选多选
-    selsChange(sels) {
+    selsChange (sels) {
       this.sels = sels;
     },
     // 批量删除
-    batchRemove() {
+    batchRemove () {
       var ids = this.sels.map(item => item.id).toString();
       this.$confirm("确认删除选中记录吗？", "提示", {
         type: "warning"
@@ -339,10 +468,10 @@ export default {
             this.getWeapons();
           });
         })
-        .catch(() => {});
+        .catch(() => { });
     }
   },
-  mounted() {
+  mounted () {
     this.getWeapons();
   }
 };

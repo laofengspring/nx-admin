@@ -93,7 +93,7 @@ export default {
     jingdian: '景点管理',
     wanjia: '玩家',
     huodong: '活动管理',
-    biaoge: '表格',
+    biaoge: '管理',
     wuqi: '武器管理',
     juese: '角色管理'
   },

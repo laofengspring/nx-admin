@@ -37,7 +37,7 @@
       <el-table-column prop="age" label="年龄" width="120"> </el-table-column>
       <!-- <el-table-column prop="birthday" label="生日" width="120">
       </el-table-column> -->
-      <el-table-column prop="mobile" label="手机号" min-width="160">
+      <el-table-column prop="mobile" label="手机号" width="160">
       </el-table-column>
       <el-table-column
         prop="create_time"

@@ -48,6 +48,8 @@ module.exports = {
   lintOnSave: false,
   productionSourceMap: false,
   devServer: {
+    sockHost: 'demo.my-domain.com',
+    disableHostCheck: true,
     port: port,
     open: true,
     overlay: {

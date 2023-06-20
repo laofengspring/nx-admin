@@ -228,7 +228,7 @@
             class="upload-demo"
             drag
             action=""
-            :http-request="uploadImage"
+            :http-request="uploadIcon"
             limit="1"
             multiple
           >
@@ -289,11 +289,12 @@
 <script>
 import util from "@/utils/table.js";
 import {
-  removeUser,
-  batchRemoveUser,
-  editUser,
-  addUser,
-  getAllWeapons
+  deleteWeapon,
+  editWeapon,
+  createWeapon,
+  getAllWeapons,
+  upload,
+  deleteManyWeapon
 } from "@/api/userTable";
 import * as fecha from "element-ui/lib/utils/date";
 
@@ -314,34 +315,49 @@ export default {
       page: 1,
       sels: [], // 列表选中列
       editFormRules: {
-        name: [{ required: true, message: "请输入姓名", trigger: "blur" }]
+        name: [{ required: true, message: "请输入武器名称", trigger: "blur" }]
       },
       // 编辑界面数据
       editForm: {
-        id: "0",
-        name: "",
-        sex: 1,
-        age: 0,
-        birth: "",
-        addr: ""
+        id: '0',
+        name: '',
+        info: '',
+        icon: '',
+        image: '',
+        skill1: '',
+        skill2: '',
+        skill3: '',
+        skill4: ''
       },
-
       addFormVisible: false, // 新增界面是否显示
       addFormRules: {
-        name: [{ required: true, message: "请输入姓名", trigger: "blur" }]
+        name: [{ required: true, message: "请输入武器名称", trigger: "blur" }]
       }
     };
   },
   methods: {
-    // 性别显示转换
-    formatSex: function (row, column) {
-      return row.gender === 1 ? "男" : row.gender === 0 ? "女" : "未知";
+    // 上传图片
+    uploadIcon (param) {
+      const para = { type: 4, id: this.editForm.id }
+      const formData = new FormData()
+      formData.append('file', param.file)
+      upload(para, formData).then(res => {
+        console.log('图片上传成功', res)
+        this.editForm.icon = res.data
+      })
     },
-    dateFormat (row, column, cellValue) {
-      return cellValue
-        ? fecha.format(new Date(cellValue), "yyyy-MM-dd hh:mm:ss")
-        : "";
+
+    // 上传图片
+    uploadImage (param) {
+      const para = { type: 5, id: this.editForm.id }
+      const formData = new FormData()
+      formData.append('file', param.file)
+      upload(para, formData).then(res => {
+        console.log('图片上传成功', res)
+        this.editForm.image = res.data
+      })
     },
+
     handleCurrentChange (val) {
       this.page = val;
       this.getWeapons();
@@ -360,7 +376,7 @@ export default {
       })
         .then(() => {
           const para = { id: row.id };
-          removeUser(para).then(res => {
+          deleteWeapon(para).then(res => {
             this.$message({
               message: "删除成功",
               type: "success"
@@ -381,12 +397,6 @@ export default {
       this.dialogStatus = "create";
       this.dialogFormVisible = true;
       this.editForm = {
-        id: "0",
-        name: "",
-        sex: 1,
-        age: 0,
-        birth: "",
-        addr: ""
       };
     },
     // 编辑
@@ -395,12 +405,9 @@ export default {
         if (valid) {
           this.$confirm("确认提交吗？", "提示", {})
             .then(() => {
-              const para = Object.assign({}, this.editForm);
-              para.birth =
-                !para.birth || para.birth === ""
-                  ? ""
-                  : util.formatDate.format(new Date(para.birth), "yyyy-MM-dd");
-              editUser(para).then(res => {
+              const para = { id: this.editForm.id }
+              const data = Object.assign({}, this.editForm)
+              editWeapon(para, data).then(res => {
                 this.$message({
                   message: "提交成功",
                   type: "success"
@@ -423,15 +430,9 @@ export default {
         if (valid) {
           this.$confirm("确认提交吗？", "提示", {})
             .then(() => {
-              this.editForm.id = parseInt(Math.random() * 100).toString(); // mock a id
               const para = Object.assign({}, this.editForm);
               console.log(para);
-
-              para.birth =
-                !para.birth || para.birth === ""
-                  ? ""
-                  : util.formatDate.format(new Date(para.birth), "yyyy-MM-dd");
-              addUser(para).then(res => {
+              createWeapon(para).then(res => {
                 this.$message({
                   message: "提交成功",
                   type: "success"
@@ -460,7 +461,7 @@ export default {
       })
         .then(() => {
           const para = { ids: ids };
-          batchRemoveUser(para).then(res => {
+          deleteManyWeapon(para).then(res => {
             this.$message({
               message: "删除成功",
               type: "success"
